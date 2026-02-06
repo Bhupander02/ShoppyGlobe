@@ -22,31 +22,28 @@ function ProductDetails() {
     dispatch(clearItems());
   }
   return (
-    <div>
-      <div>
-        <div>
-          <img src={item.coverImage} alt={item.title} />
-        </div>
-        <div>
-          <h1>{item.title}</h1>
-          <p>
-            seller: <span>{item.seller}</span>
-          </p>
-          <p>
-            <span>{item.description}</span>
-          </p>
-          <p>
-            <span>{item.cost}</span>
-          </p>
-        </div>
-        <div className="mt-10 flex flex-col gap-4">
-          <button onClick={() => handleAddItem(item)}>🛒 Add to Cart</button>
+    <div className="container product-details">
+      <img src={item.coverImage} alt={item.title} loading="lazy"/>
 
-          <button onClick={() => handleRemoveItem(item)}>
+      <div className="details-info">
+        <h1>{item.title}</h1>
+        <p>
+          <strong>Seller:</strong> {item.seller}
+        </p>
+        <p>
+          <strong>Rating:</strong> ⭐ {item.rating}
+        </p>
+        <p>{item.description}</p>
+        <p className="product-price">${item.cost}</p>
+
+        <div className="details-actions">
+          <button onClick={() => handleAddItem(item)}>🛒 Add to Cart</button>
+          <button className="secondary" onClick={() => handleRemoveItem(item)}>
             ➖ Remove from Cart
           </button>
-
-          <button onClick={() => handleClearCart(item)}>🧹 Empty Cart</button>
+          <button className="secondary" onClick={handleClearCart}>
+            🧹 Empty Cart
+          </button>
         </div>
       </div>
     </div>

@@ -1,14 +1,12 @@
 export default function ProductItem({ itemDetails }) {
   return (
-    <div>
-      <div>
-        <img src={itemDetails.coverImage} alt="Image" />
-        <div>
-          <h1>{itemDetails.title}</h1>
-          <p>
-            <span>{itemDetails.cost}</span>
-          </p>
-        </div>
+    <div className="product-card">
+      <img src={itemDetails.coverImage} alt={itemDetails.title} loading="lazy"/>
+      <div className="product-card-body">
+        <h3 className="product-title">{itemDetails.title}</h3>
+        <p className="product-seller">Seller: {itemDetails.seller}</p>
+        <p className="product-rating">⭐ {itemDetails.rating}</p>
+        <p className="product-price">${itemDetails.cost}</p>
       </div>
     </div>
   );

@@ -12,40 +12,28 @@ function CartItem() {
   }
 
   return (
-    <div>
+    <div className="container cart-page">
       <h1>Your Cart</h1>
 
-      <div>
-        {cartItems.map((item) => (
-          <div
-            key={item.id}
-            style={{
-              display: "flex",
-              gap: "16px",
-              marginBottom: "16px",
-              alignItems: "center",
-            }}
-          >
-            <img
-              src={item.coverImage}
-              alt={item.title}
-              width="80"
-              height="80"
-            />
-
-            <div>
-              <h3>{item.title}</h3>
-              <p>${item.cost}</p>
-
-              <button onClick={() => dispatch(removeItem(item.id))}>
-                ➖ Remove
-              </button>
-            </div>
+      {cartItems.map((item) => (
+        <div key={item.id} className="cart-item">
+          <img src={item.coverImage} alt={item.title} loading="lazy"/>
+          <div>
+            <h3>{item.title}</h3>
+            <p>${item.cost}</p>
+            <button
+              className="secondary"
+              onClick={() => dispatch(removeItem(item.id))}
+            >
+              ➖ Remove
+            </button>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
 
-      <button onClick={() => dispatch(clearItems())}>🧹 Clear Cart</button>
+      <button className="secondary" onClick={() => dispatch(clearItems())}>
+        🧹 Clear Cart
+      </button>
     </div>
   );
 }

@@ -5,12 +5,14 @@ const Items = getItem();
 
 export default function ItemList() {
   return (
-    <div>
-      {Items.map((data) => (
-        <Link key={data.id} to={`/item/${data.id}`}>
-          <ProductItem itemDetails={data} />
-        </Link>
-      ))}
+    <div className="container">
+      <div className="product-grid">
+        {Items.map((item) => (
+          <Link key={item.id} to={`/item/${item.id}`}>
+            <ProductItem itemDetails={item} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
